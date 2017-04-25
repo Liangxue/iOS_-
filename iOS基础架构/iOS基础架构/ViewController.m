@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "MVCController.h"
 @interface ViewController ()
 
 @end
@@ -16,9 +16,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+        [self showMVC];
+    });
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+- (void)showMVC{
+    
+    MVCController *mvc = [MVCController new];
+    
+    
+    [self presentViewController:mvc animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
